@@ -116,9 +116,9 @@ const appFeatures = [
 ]
 
 const appFeatureStats = [
-  { value: '247', label: 'documented API endpoints' },
-  { value: '15', label: 'platform modules powering the app' },
-  { value: '7', label: 'real-time event types and status flows' },
+  { value: '6', label: 'premium app features' },
+  { value: '15', label: 'connected platform modules' },
+  { value: '7', label: 'live experience touchpoints' },
 ]
 
 function GlowvaxWordmark({ className = '' }) {
@@ -219,11 +219,11 @@ function App() {
           <div className="app-features-shell">
             <div className="app-features-intro">
               <div className="section-kicker">App Features</div>
-              <h2>Built Around Real <GlowvaxWordmark className="brand-inline brand-heading-mark" /> Workflows</h2>
+              <h2>Built for Seamless <GlowvaxWordmark className="brand-inline brand-heading-mark" /> Experiences</h2>
               <p>
-                This section is based on the actual backend platform modules, not placeholder marketing copy.
-                From discovery and live bookings to wallet, staff, KYC, reviews, and notifications, the product
-                is designed to support real marketplace operations at scale.
+                Explore a premium booking experience designed to feel simple, secure, and elegant from the first search
+                to the final confirmation. Every feature is crafted to help customers discover trusted services and help
+                partners grow with ease.
               </p>
               <div className="app-feature-stats" aria-label="Platform stats">
                 {appFeatureStats.map(({ value, label }) => (
