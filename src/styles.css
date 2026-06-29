@@ -480,6 +480,232 @@ img {
   line-height: 1;
 }
 
+.app-features-section {
+  position: relative;
+  padding: 104px 8%;
+  overflow: hidden;
+  color: var(--paper);
+  background:
+    radial-gradient(circle at top left, rgba(180, 108, 255, 0.26), transparent 28%),
+    radial-gradient(circle at 86% 18%, rgba(214, 162, 61, 0.18), transparent 24%),
+    linear-gradient(180deg, #18091f 0%, #291035 52%, #1a0a24 100%);
+}
+
+.app-features-section::before,
+.app-features-section::after {
+  content: "";
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(12px);
+  pointer-events: none;
+}
+
+.app-features-section::before {
+  top: 74px;
+  left: -80px;
+  width: 220px;
+  height: 220px;
+  border: 1px solid rgba(180, 108, 255, 0.16);
+}
+
+.app-features-section::after {
+  right: -70px;
+  bottom: 34px;
+  width: 180px;
+  height: 180px;
+  border: 1px solid rgba(214, 162, 61, 0.14);
+}
+
+.app-features-shell {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.22fr);
+  gap: 34px;
+  align-items: start;
+}
+
+.app-features-intro {
+  position: sticky;
+  top: 108px;
+  padding: 32px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 26px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+  backdrop-filter: blur(14px);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.24);
+}
+
+.app-features-intro h2 {
+  margin-top: 18px;
+  font-family: "Playfair Display", serif;
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 0.96;
+}
+
+.app-features-intro p {
+  margin-top: 22px;
+  color: rgba(255, 255, 255, 0.76);
+  font-size: 15px;
+  line-height: 1.85;
+}
+
+.app-feature-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.app-feature-stat {
+  min-height: 112px;
+  padding: 18px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.app-feature-stat strong {
+  display: block;
+  color: var(--lime);
+  font-size: 34px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.app-feature-stat span {
+  display: block;
+  margin-top: 12px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.app-feature-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.app-feature-card {
+  position: relative;
+  min-height: 280px;
+  padding: 26px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 26px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03)),
+    linear-gradient(135deg, rgba(214, 162, 61, 0.06), rgba(180, 108, 255, 0.08));
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
+  animation: featureRise 0.8s ease both;
+  animation-delay: var(--feature-delay);
+  transition: transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
+}
+
+.app-feature-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 130px;
+  height: 130px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.12), transparent 68%);
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.app-feature-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent 0%, rgba(255, 255, 255, 0.06) 48%, transparent 100%);
+  transform: translateX(-140%);
+  transition: transform 0.75s ease;
+  pointer-events: none;
+}
+
+.app-feature-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(214, 162, 61, 0.32);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.34);
+}
+
+.app-feature-card:hover::after {
+  transform: translateX(140%);
+}
+
+.app-feature-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.app-feature-icon {
+  display: grid;
+  place-items: center;
+  width: 58px;
+  height: 58px;
+  border-radius: 18px;
+  color: var(--ink);
+  background: linear-gradient(135deg, #f4d58d 0%, #d6a23d 100%);
+  box-shadow: 0 18px 36px rgba(214, 162, 61, 0.18);
+}
+
+.app-feature-index {
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+}
+
+.app-feature-card h3 {
+  margin-top: 26px;
+  font-size: 28px;
+  line-height: 1.06;
+}
+
+.app-feature-card p {
+  margin-top: 14px;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.app-feature-points {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.app-feature-points span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 8px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  color: rgba(255, 255, 255, 0.84);
+  background: rgba(255, 255, 255, 0.04);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+@keyframes featureRise {
+  from {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .why-section {
   display: grid;
   grid-template-columns: minmax(0, 0.75fr) minmax(0, 1.25fr);
@@ -794,6 +1020,7 @@ img {
   }
 
   .section-heading h2,
+  .app-features-intro h2,
   .why-copy h2,
   .partner-copy h2 {
     font-size: 58px;
@@ -852,6 +1079,7 @@ img {
   }
 
   .services-section,
+  .app-features-section,
   .why-section,
   .partner-section,
   .download-section,
@@ -860,6 +1088,7 @@ img {
   }
 
   .section-heading,
+  .app-features-shell,
   .why-section,
   .partner-section,
   .download-section,
@@ -872,6 +1101,15 @@ img {
   }
 
   .service-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .app-features-intro {
+    position: relative;
+    top: 0;
+  }
+
+  .app-feature-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -926,6 +1164,7 @@ img {
   }
 
   .section-heading h2,
+  .app-features-intro h2,
   .why-copy h2,
   .partner-copy h2,
   .download-center h2 {
@@ -933,6 +1172,7 @@ img {
   }
 
   .services-section,
+  .app-features-section,
   .why-section,
   .partner-section {
     padding-top: 76px;
@@ -940,8 +1180,23 @@ img {
   }
 
   .service-grid,
+  .app-feature-grid,
   .why-grid {
     grid-template-columns: 1fr;
+  }
+
+  .app-features-intro {
+    padding: 24px;
+  }
+
+  .app-feature-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .app-feature-card {
+    min-height: 0;
+    padding: 22px;
+    border-radius: 22px;
   }
 
   .service-card,

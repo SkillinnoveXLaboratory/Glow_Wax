@@ -10,15 +10,18 @@ import {
   Download,
   Gem,
   HeartPulse,
+  Layers3,
   Mail,
   Menu,
   Paintbrush,
+  Search,
   Scissors,
   ShieldCheck,
   Sparkles,
   Star,
   Store,
   TicketPercent,
+  UsersRound,
   X,
 } from 'lucide-react'
 import './styles.css'
@@ -71,6 +74,51 @@ const whyFeatures = [
   { label: 'Best Offers', icon: TicketPercent },
   { label: 'Instant Confirmation', icon: BellRing },
   { label: 'Trusted Experience', icon: ShieldCheck },
+]
+
+const appFeatures = [
+  {
+    title: 'Smart Discovery',
+    icon: Search,
+    description: 'Search by service, category, city, tags, nearby listings, featured partners, and top-rated professionals.',
+    points: ['Nearby and featured discovery', 'Autocomplete and filters', 'Recent search history'],
+  },
+  {
+    title: 'Live Booking Flow',
+    icon: CalendarCheck,
+    description: 'Customers can check real-time slot availability, create bookings, reschedule visits, and track status updates end to end.',
+    points: ['Available time slots', 'Reschedule acceptance flow', 'Upcoming and history tracking'],
+  },
+  {
+    title: 'Wallet And Secure Payments',
+    icon: CreditCard,
+    description: 'The platform supports Razorpay checkout, wallet top-ups, saved payment methods, refunds, invoices, and payment verification.',
+    points: ['Wallet top-up and pay', 'Refund and invoice support', 'Razorpay verification'],
+  },
+  {
+    title: 'Partner KYC And Launch',
+    icon: BadgeCheck,
+    description: 'Businesses can register, upload KYC documents, complete approval, set availability, add galleries, and go live with confidence.',
+    points: ['KYC approval workflow', 'Availability and slots', 'Portfolio image uploads'],
+  },
+  {
+    title: 'Staff And Service Operations',
+    icon: UsersRound,
+    description: 'Partners can manage services, assign staff to bookings, track schedules, handle leaves, and view staff earnings.',
+    points: ['Staff assignment', 'Schedule and leave control', 'Partner service pricing'],
+  },
+  {
+    title: 'Reviews, Alerts, And Membership',
+    icon: Layers3,
+    description: 'Completed-booking reviews, real-time notifications, push messaging, featured listings, and membership benefits are built in.',
+    points: ['Verified review rules', 'WebSocket and push alerts', 'Membership plans and perks'],
+  },
+]
+
+const appFeatureStats = [
+  { value: '247', label: 'documented API endpoints' },
+  { value: '15', label: 'platform modules powering the app' },
+  { value: '7', label: 'real-time event types and status flows' },
 ]
 
 function GlowvaxWordmark({ className = '' }) {
@@ -164,6 +212,50 @@ function App() {
                 </div>
               </article>
             ))}
+          </div>
+        </section>
+
+        <section className="app-features-section" id="app-features">
+          <div className="app-features-shell">
+            <div className="app-features-intro">
+              <div className="section-kicker">App Features</div>
+              <h2>Built Around Real <GlowvaxWordmark className="brand-inline brand-heading-mark" /> Workflows</h2>
+              <p>
+                This section is based on the actual backend platform modules, not placeholder marketing copy.
+                From discovery and live bookings to wallet, staff, KYC, reviews, and notifications, the product
+                is designed to support real marketplace operations at scale.
+              </p>
+              <div className="app-feature-stats" aria-label="Platform stats">
+                {appFeatureStats.map(({ value, label }) => (
+                  <div className="app-feature-stat" key={label}>
+                    <strong>{value}</strong>
+                    <span>{label}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="app-feature-grid">
+              {appFeatures.map(({ title, icon: Icon, description, points }, index) => (
+                <article
+                  className="app-feature-card"
+                  key={title}
+                  style={{ '--feature-delay': `${index * 90}ms` }}
+                >
+                  <div className="app-feature-card-top">
+                    <span className="app-feature-icon"><Icon size={24} /></span>
+                    <span className="app-feature-index">0{index + 1}</span>
+                  </div>
+                  <h3>{title}</h3>
+                  <p>{description}</p>
+                  <div className="app-feature-points">
+                    {points.map((point) => (
+                      <span key={point}>{point}</span>
+                    ))}
+                  </div>
+                </article>
+              ))}
+            </div>
           </div>
         </section>
 
@@ -264,7 +356,7 @@ function App() {
             <a href="#home" aria-label="LinkedIn">IN</a>
           </div>
         </div>
-        <p className="copyright">Copyright © <GlowvaxWordmark className="brand-inline brand-copy-mark" />. All Rights Reserved.</p>
+        <p className="copyright">Copyright (c) <GlowvaxWordmark className="brand-inline brand-copy-mark" />. All Rights Reserved.</p>
       </footer>
     </>
   )
