@@ -38,32 +38,32 @@ const services = [
   {
     title: 'Salon',
     icon: Scissors,
-    image: 'https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=820&q=78',
+    image: '/images/saloon.png',
   },
   {
     title: 'Spa',
     icon: Sparkles,
-    image: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=820&q=78',
+    image: '/images/spa.png',
   },
   {
     title: 'Tattoo',
     icon: Paintbrush,
-    image: 'https://images.unsplash.com/photo-1598371839696-5c5bb00bdc28?auto=format&fit=crop&w=820&q=78',
+    image: '/images/tatoo.jpeg',
   },
   {
     title: 'Beauty',
     icon: Gem,
-    image: 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=820&q=78',
+    image: '/images/beauty.jpeg',
   },
   {
     title: 'Grooming',
     icon: Store,
-    image: 'https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&w=820&q=78',
+    image: '/images/hero-salon.jpg',
   },
   {
     title: 'Wellness',
     icon: HeartPulse,
-    image: 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=820&q=78',
+    image: '/images/welness.jpeg',
   },
 ]
 
@@ -174,6 +174,30 @@ function App() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  useEffect(() => {
+    const animatedItems = Array.from(document.querySelectorAll('.motion-card, .hero-fade'))
+
+    if (!('IntersectionObserver' in window)) {
+      animatedItems.forEach((item) => item.classList.add('in-view'))
+      return undefined
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view')
+            observer.unobserve(entry.target)
+          }
+        })
+      },
+      { rootMargin: '0px 0px -12% 0px', threshold: 0.14 },
+    )
+
+    animatedItems.forEach((item) => observer.observe(item))
+    return () => observer.disconnect()
+  }, [])
+
   const closeMenu = () => setMenuOpen(false)
   const handleContactSubmit = (event) => {
     event.preventDefault()
@@ -227,7 +251,7 @@ function App() {
 
       <main>
         <section className="hero" id="home">
-          <div className="hero-content reveal">
+          <div className="hero-content hero-fade">
             <p className="eyebrow">Premium beauty booking</p>
             <h1 aria-label="Glowvax">
               <GlowvaxWordmark className="brand-hero" />
@@ -248,14 +272,18 @@ function App() {
         </section>
 
         <section className="services-section" id="services">
-          <div className="section-kicker">Services</div>
-          <div className="section-heading">
+          <div className="section-kicker motion-card from-left">Services</div>
+          <div className="section-heading motion-card from-right">
             <h2>Premium Services Preview</h2>
             <p>Choose the service you need and book with verified professionals in just a few taps.</p>
           </div>
           <div className="service-grid">
-            {services.map(({ title, icon: Icon, image }) => (
-              <article className="service-card" key={title}>
+            {services.map(({ title, icon: Icon, image }, index) => (
+              <article
+                className={`service-card motion-card ${index % 2 === 0 ? 'from-left' : 'from-right'}`}
+                key={title}
+                style={{ '--motion-delay': `${index * 70}ms` }}
+              >
                 <img src={image} alt={`${title} service`} loading="lazy" decoding="async" />
                 <div className="service-card-content">
                   <span><Icon size={22} /></span>
@@ -268,7 +296,7 @@ function App() {
 
         <section className="app-features-section" id="app-features">
           <div className="app-features-shell">
-            <div className="app-features-intro">
+            <div className="app-features-intro motion-card from-left">
               <div className="section-kicker">App Features</div>
               <h2>Built for Seamless <GlowvaxWordmark className="brand-inline brand-heading-mark" /> Experiences</h2>
               <p>
@@ -289,9 +317,9 @@ function App() {
             <div className="app-feature-grid">
               {appFeatures.map(({ title, icon: Icon, description, points }, index) => (
                 <article
-                  className="app-feature-card"
+                  className={`app-feature-card motion-card ${index % 2 === 0 ? 'from-right' : 'from-left'}`}
                   key={title}
-                  style={{ '--feature-delay': `${index * 90}ms` }}
+                  style={{ '--motion-delay': `${index * 70}ms` }}
                 >
                   <div className="app-feature-card-top">
                     <span className="app-feature-icon"><Icon size={24} /></span>
@@ -311,7 +339,7 @@ function App() {
         </section>
 
         <section className="why-section" id="why">
-          <div className="why-copy">
+          <div className="why-copy motion-card from-left">
             <div className="section-kicker">Why <GlowvaxWordmark className="brand-inline brand-kicker-mark" /></div>
             <h2>Why <GlowvaxWordmark className="brand-inline brand-heading-mark" /></h2>
             <p>
@@ -320,8 +348,12 @@ function App() {
             </p>
           </div>
           <div className="why-grid">
-            {whyFeatures.map(({ label, icon: Icon }) => (
-              <article className="feature-card" key={label}>
+            {whyFeatures.map(({ label, icon: Icon }, index) => (
+              <article
+                className={`feature-card motion-card ${index % 2 === 0 ? 'from-right' : 'from-left'}`}
+                key={label}
+                style={{ '--motion-delay': `${index * 65}ms` }}
+              >
                 <Icon size={28} />
                 <h3>{label}</h3>
               </article>
@@ -330,7 +362,7 @@ function App() {
         </section>
 
         <section className="partner-section" id="partner">
-          <div className="partner-image">
+          <div className="partner-image motion-card from-left">
             <img
               src="https://images.unsplash.com/photo-1633681926022-84c23e8cb2d6?auto=format&fit=crop&w=1100&q=78"
               alt="Salon professional preparing a beauty workspace"
@@ -338,7 +370,7 @@ function App() {
               decoding="async"
             />
           </div>
-          <div className="partner-copy">
+          <div className="partner-copy motion-card from-right">
             <div className="section-kicker">Partner With Us</div>
             <h2>Partner With <GlowvaxWordmark className="brand-inline brand-heading-mark" /></h2>
             <p>
@@ -353,7 +385,7 @@ function App() {
         </section>
 
         <section className="download-section" id="download">
-          <div className="download-center">
+          <div className="download-center motion-card from-left">
             <div className="section-kicker">Download App</div>
             <h2>Download the <GlowvaxWordmark className="brand-inline brand-heading-mark" /> App</h2>
             <p>
@@ -371,7 +403,7 @@ function App() {
               </a>
             </div>
           </div>
-          <div className="phone-frame" aria-hidden="true">
+          <div className="phone-frame motion-card from-right" aria-hidden="true">
             <div className="phone-screen">
               <Star size={22} />
               <strong><GlowvaxWordmark className="brand-phone" /></strong>
@@ -385,20 +417,20 @@ function App() {
       </main>
 
       <footer className="site-footer">
-        <div className="footer-brand">
+        <div className="footer-brand motion-card from-left">
           <a className="logo footer-logo" href="#home" aria-label="Glowvax">
             <img className="brand-mark" src="/images/logo.png" alt="" aria-hidden="true" />
             <GlowvaxWordmark />
           </a>
           <p>Premium beauty and wellness booking for trusted salons, spas, and professionals.</p>
         </div>
-        <div className="footer-links" aria-label="Footer navigation">
+        <div className="footer-links motion-card from-right" aria-label="Footer navigation">
           <a href="#why">About Us</a>
           <a href="#home">Privacy Policy</a>
           <a href="#home">Terms & Conditions</a>
           <a href="mailto:hello@glowvax.com">Contact Us</a>
         </div>
-        <div className="footer-contact">
+        <div className="footer-contact motion-card from-left">
           <span className="footer-label">Email</span>
           <a href="mailto:hello@glowvax.com"><Mail size={18} /> hello@glowvax.com</a>
           <span className="footer-label">Social Media</span>
@@ -414,7 +446,7 @@ function App() {
             </a>
           </div>
         </div>
-        <div className="footer-contact-form">
+        <div className="footer-contact-form motion-card from-right">
           <span className="footer-label">Contact Us</span>
           <p>Share your name, email, and note. We will open your email app with a ready-to-send message.</p>
           <form className="contact-form" onSubmit={handleContactSubmit}>
