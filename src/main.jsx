@@ -131,6 +131,38 @@ function GlowvaxWordmark({ className = '' }) {
   )
 }
 
+function InstagramBrandIcon(props) {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" {...props}>
+      <rect x="4.5" y="4.5" width="15" height="15" rx="4.5" fill="none" stroke="currentColor" strokeWidth="1.8" />
+      <circle cx="12" cy="12" r="3.6" fill="none" stroke="currentColor" strokeWidth="1.8" />
+      <circle cx="17" cy="7" r="1.1" fill="currentColor" />
+    </svg>
+  )
+}
+
+function FacebookBrandIcon(props) {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" {...props}>
+      <path
+        fill="currentColor"
+        d="M14 8.5V7.1c0-.7.4-1 1-1h1.6V3.5H14c-2.2 0-3.5 1.3-3.5 3.6v1.4H8v2.6h2.5V20H14v-9h2.7l.3-2.6H14Z"
+      />
+    </svg>
+  )
+}
+
+function LinkedinBrandIcon(props) {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" {...props}>
+      <path
+        fill="currentColor"
+        d="M6.2 8.8H3.7V20h2.5V8.8ZM5 3.8a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3Zm5.6 5H8.1V20h2.5v-6.1c0-1.8.7-2.8 2.2-2.8 1.4 0 1.9 1 1.9 2.8V20h2.5v-6.6c0-3.1-1.7-4.7-3.9-4.7-1.4 0-2.4.6-3.1 1.6h-.1V8.8Z"
+      />
+    </svg>
+  )
+}
+
 function App() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
@@ -143,6 +175,25 @@ function App() {
   }, [])
 
   const closeMenu = () => setMenuOpen(false)
+  const handleContactSubmit = (event) => {
+    event.preventDefault()
+
+    const formData = new FormData(event.currentTarget)
+    const name = String(formData.get('name') || '').trim()
+    const email = String(formData.get('email') || '').trim()
+    const message = String(formData.get('message') || '').trim()
+
+    const subject = `Glowvax enquiry from ${name || 'website visitor'}`
+    const body = [
+      `Name: ${name || 'Not provided'}`,
+      `Email: ${email || 'Not provided'}`,
+      '',
+      message || 'Hello Glowvax team, I would like to get in touch.',
+    ].join('\n')
+
+    window.location.href = `mailto:hello@glowvax.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+    event.currentTarget.reset()
+  }
 
   return (
     <>
@@ -205,7 +256,7 @@ function App() {
           <div className="service-grid">
             {services.map(({ title, icon: Icon, image }) => (
               <article className="service-card" key={title}>
-                <img src={image} alt={`${title} service`} loading="lazy" />
+                <img src={image} alt={`${title} service`} loading="lazy" decoding="async" />
                 <div className="service-card-content">
                   <span><Icon size={22} /></span>
                   <h3>{title}</h3>
@@ -284,6 +335,7 @@ function App() {
               src="https://images.unsplash.com/photo-1633681926022-84c23e8cb2d6?auto=format&fit=crop&w=1100&q=78"
               alt="Salon professional preparing a beauty workspace"
               loading="lazy"
+              decoding="async"
             />
           </div>
           <div className="partner-copy">
@@ -351,10 +403,26 @@ function App() {
           <a href="mailto:hello@glowvax.com"><Mail size={18} /> hello@glowvax.com</a>
           <span className="footer-label">Social Media</span>
           <div className="social-links" aria-label="Social media">
-            <a href="#home" aria-label="Instagram">IG</a>
-            <a href="#home" aria-label="Facebook">FB</a>
-            <a href="#home" aria-label="LinkedIn">IN</a>
+            <a href="https://www.instagram.com/" target="_blank" rel="noreferrer" aria-label="Instagram">
+              <InstagramBrandIcon />
+            </a>
+            <a href="https://www.facebook.com/" target="_blank" rel="noreferrer" aria-label="Facebook">
+              <FacebookBrandIcon />
+            </a>
+            <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+              <LinkedinBrandIcon />
+            </a>
           </div>
+        </div>
+        <div className="footer-contact-form">
+          <span className="footer-label">Contact Us</span>
+          <p>Share your name, email, and note. We will open your email app with a ready-to-send message.</p>
+          <form className="contact-form" onSubmit={handleContactSubmit}>
+            <input type="text" name="name" placeholder="Your name" aria-label="Your name" autoComplete="name" />
+            <input type="email" name="email" placeholder="Email address" aria-label="Email address" autoComplete="email" />
+            <textarea name="message" rows="4" placeholder="Tell us what you need" aria-label="Message" />
+            <button type="submit" className="site-button footer-submit">Send Message</button>
+          </form>
         </div>
         <p className="copyright">Copyright (c) <GlowvaxWordmark className="brand-inline brand-copy-mark" />. All Rights Reserved.</p>
       </footer>
