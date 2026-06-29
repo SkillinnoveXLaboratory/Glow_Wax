@@ -73,6 +73,16 @@ const whyFeatures = [
   { label: 'Trusted Experience', icon: ShieldCheck },
 ]
 
+function GlowvaxWordmark({ className = '' }) {
+  const classes = ['brand-wordmark', className].filter(Boolean).join(' ')
+
+  return (
+    <span className={classes} aria-label="Glowvax">
+      <span className="brand-gold">GLOW</span><span className="brand-purple">VAX</span>
+    </span>
+  )
+}
+
 function App() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
@@ -89,7 +99,10 @@ function App() {
   return (
     <>
       <header className={scrolled ? 'site-header scrolled' : 'site-header'}>
-        <a className="logo" href="#home">Glowvax</a>
+        <a className="logo" href="#home" aria-label="Glowvax">
+          <img className="brand-mark" src="/images/logo.png" alt="" aria-hidden="true" />
+          <GlowvaxWordmark />
+        </a>
         <nav aria-label="Primary navigation">
           {navLinks.map((link) => (
             <a href={link.href} key={link.label}>{link.label}</a>
@@ -117,7 +130,9 @@ function App() {
         <section className="hero" id="home">
           <div className="hero-content reveal">
             <p className="eyebrow">Premium beauty booking</p>
-            <h1>Glowvax</h1>
+            <h1 aria-label="Glowvax">
+              <GlowvaxWordmark className="brand-hero" />
+            </h1>
             <p className="hero-copy">
               Discover trusted salons, spas, and beauty professionals near you.
               Book appointments effortlessly with a simple, secure, and convenient experience.
@@ -154,10 +169,10 @@ function App() {
 
         <section className="why-section" id="why">
           <div className="why-copy">
-            <div className="section-kicker">Why Glowvax</div>
-            <h2>Why Glowvax</h2>
+            <div className="section-kicker">Why <GlowvaxWordmark className="brand-inline brand-kicker-mark" /></div>
+            <h2>Why <GlowvaxWordmark className="brand-inline brand-heading-mark" /></h2>
             <p>
-              Glowvax helps you discover trusted beauty professionals and book appointments effortlessly.
+              <GlowvaxWordmark className="brand-inline brand-copy-mark" /> helps you discover trusted beauty professionals and book appointments effortlessly.
               We make salon booking simple, secure, and convenient.
             </p>
           </div>
@@ -181,9 +196,9 @@ function App() {
           </div>
           <div className="partner-copy">
             <div className="section-kicker">Partner With Us</div>
-            <h2>Partner With Glowvax</h2>
+            <h2>Partner With <GlowvaxWordmark className="brand-inline brand-heading-mark" /></h2>
             <p>
-              Join Glowvax and grow your salon business. Reach more customers, manage appointments with ease,
+              Join <GlowvaxWordmark className="brand-inline brand-copy-mark" /> and grow your salon business. Reach more customers, manage appointments with ease,
               and increase your bookings through our platform.
             </p>
             <a href="mailto:hello@glowvax.com?subject=Partner%20With%20Glowvax" className="site-button primary-action">
@@ -196,10 +211,10 @@ function App() {
         <section className="download-section" id="download">
           <div className="download-center">
             <div className="section-kicker">Download App</div>
-            <h2>Download the Glowvax App</h2>
+            <h2>Download the <GlowvaxWordmark className="brand-inline brand-heading-mark" /> App</h2>
             <p>
               Discover and book trusted salons, spas, and beauty services near you. Enjoy a fast,
-              secure, and hassle-free booking experience with Glowvax.
+              secure, and hassle-free booking experience with <GlowvaxWordmark className="brand-inline brand-copy-mark" />.
             </p>
             <div className="store-row">
               <a href="mailto:hello@glowvax.com?subject=Glowvax%20Google%20Play" className="site-button">
@@ -215,17 +230,22 @@ function App() {
           <div className="phone-frame" aria-hidden="true">
             <div className="phone-screen">
               <Star size={22} />
-              <strong>Glowvax</strong>
+              <strong><GlowvaxWordmark className="brand-phone" /></strong>
               <span>Book salon appointments faster.</span>
             </div>
           </div>
-          <div className="big-brand">Glowvax</div>
+          <div className="big-brand" aria-hidden="true">
+            <GlowvaxWordmark className="brand-ghost" />
+          </div>
         </section>
       </main>
 
       <footer className="site-footer">
         <div className="footer-brand">
-          <a className="logo" href="#home">Glowvax</a>
+          <a className="logo footer-logo" href="#home" aria-label="Glowvax">
+            <img className="brand-mark" src="/images/logo.png" alt="" aria-hidden="true" />
+            <GlowvaxWordmark />
+          </a>
           <p>Premium beauty and wellness booking for trusted salons, spas, and professionals.</p>
         </div>
         <div className="footer-links" aria-label="Footer navigation">
@@ -244,7 +264,7 @@ function App() {
             <a href="#home" aria-label="LinkedIn">IN</a>
           </div>
         </div>
-        <p className="copyright">Copyright © Glowvax. All Rights Reserved.</p>
+        <p className="copyright">Copyright © <GlowvaxWordmark className="brand-inline brand-copy-mark" />. All Rights Reserved.</p>
       </footer>
     </>
   )

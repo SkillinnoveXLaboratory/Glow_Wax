@@ -10,7 +10,8 @@
   --soft: #f3f3f0;
   --muted: #a9a9a9;
   --line: rgba(255, 255, 255, 0.14);
-  --lime: #d8ff00;
+  --lime: #d6a23d;
+  --brand-gradient: linear-gradient(90deg, #f5d48b 0%, #d7a24f 40%, #b46cff 45%, #b46cff 100%);
   --pink: #e10062;
   --orange: #ff5a1f;
   --charcoal: #111111;
@@ -72,10 +73,90 @@ img {
 }
 
 .logo {
-  font-size: 22px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 23px;
   font-weight: 800;
   letter-spacing: 0;
   white-space: nowrap;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.brand-mark {
+  width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
+  object-fit: cover;
+  border-radius: 12px;
+  background: #111;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 10px 26px rgba(0, 0, 0, 0.22);
+}
+
+.brand-wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  font-family: "Cinzel", "Playfair Display", serif;
+  font-weight: 700;
+  letter-spacing: 0.035em;
+  line-height: 0.94;
+  text-transform: uppercase;
+  white-space: nowrap;
+  filter: drop-shadow(0 3px 12px rgba(0, 0, 0, 0.22));
+}
+
+.brand-gold,
+.brand-purple {
+  display: inline-block;
+  line-height: 1;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.brand-gold {
+  background-image: linear-gradient(180deg, #f9e4a8 0%, #f1c86f 24%, #d89b3f 56%, #8a5619 100%);
+}
+
+.brand-purple {
+  background-image: linear-gradient(180deg, #f0d5ff 0%, #dea6ff 24%, #c26fff 60%, #8b43e4 100%);
+}
+
+.brand-inline {
+  font-size: 0.96em;
+  vertical-align: baseline;
+}
+
+.brand-hero {
+  letter-spacing: 0.05em;
+  filter: drop-shadow(0 6px 24px rgba(0, 0, 0, 0.28));
+}
+
+.brand-kicker-mark {
+  font-size: 0.9em;
+}
+
+.brand-heading-mark {
+  font-size: 0.95em;
+}
+
+.brand-copy-mark {
+  font-size: 0.92em;
+  letter-spacing: 0.03em;
+}
+
+.brand-phone {
+  font-size: 1em;
+}
+
+.brand-ghost {
+  font-size: inherit;
+  opacity: 0.4;
+  filter: saturate(0.92);
 }
 
 .site-header nav {
@@ -116,7 +197,7 @@ img {
   border-radius: 999px;
   color: var(--ink);
   background: var(--lime);
-  box-shadow: 0 16px 38px rgba(216, 255, 0, 0.22);
+  box-shadow: 0 16px 38px rgba(214, 162, 61, 0.22);
   font-size: 14px;
   font-weight: 800;
   line-height: 1;
@@ -126,7 +207,7 @@ img {
 
 .site-button:hover {
   transform: translateY(-3px);
-  box-shadow: 0 22px 48px rgba(216, 255, 0, 0.28);
+  box-shadow: 0 22px 48px rgba(214, 162, 61, 0.28);
 }
 
 .menu-toggle {
@@ -189,8 +270,8 @@ img {
   padding: 118px 8% 76px;
   overflow: hidden;
   background:
-    linear-gradient(90deg, rgba(5, 5, 5, 0.86) 0%, rgba(5, 5, 5, 0.66) 42%, rgba(5, 5, 5, 0.25) 100%),
-    url('/images/hero-salon.jpg') center right / cover no-repeat;
+    linear-gradient(90deg, rgba(5, 5, 5, 0.84) 0%, rgba(5, 5, 5, 0.6) 40%, rgba(5, 5, 5, 0.16) 100%),
+    url('/images/Background.png') center right / cover no-repeat;
 }
 
 .hero::after {
@@ -235,6 +316,10 @@ img {
   font-size: 118px;
   font-weight: 800;
   line-height: 0.9;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0;
 }
 
 .hero-copy {
@@ -362,7 +447,7 @@ img {
 
 .service-card:hover {
   transform: translateY(-8px);
-  border-color: rgba(216, 255, 0, 0.52);
+  border-color: rgba(214, 162, 61, 0.52);
   box-shadow: 0 28px 70px rgba(0, 0, 0, 0.32);
 }
 
@@ -557,7 +642,7 @@ img {
   padding: 10px;
   border-radius: 150px;
   background: var(--lime);
-  box-shadow: 0 0 54px rgba(216, 255, 0, 0.34);
+  box-shadow: 0 0 54px rgba(214, 162, 61, 0.34);
   animation: floatFrame 4s ease-in-out infinite;
 }
 
@@ -624,6 +709,11 @@ img {
 .footer-brand p {
   max-width: 380px;
   margin-top: 18px;
+}
+
+.footer-logo {
+  display: inline-flex;
+  margin-bottom: 2px;
 }
 
 .footer-links,
@@ -738,8 +828,8 @@ img {
     padding: 104px 5% 68px;
     align-items: flex-start;
     background:
-      linear-gradient(180deg, rgba(5, 5, 5, 0.82) 0%, rgba(5, 5, 5, 0.52) 58%, rgba(5, 5, 5, 0.24) 100%),
-      url('/images/hero-salon.jpg') center / cover no-repeat;
+      linear-gradient(180deg, rgba(5, 5, 5, 0.82) 0%, rgba(5, 5, 5, 0.5) 58%, rgba(5, 5, 5, 0.22) 100%),
+      url('/images/Background.png') center right / cover no-repeat;
   }
 
   .hero h1 {
@@ -805,6 +895,18 @@ img {
 }
 
 @media (max-width: 620px) {
+  .logo {
+    gap: 10px;
+    font-size: 18px;
+  }
+
+  .brand-mark {
+    width: 36px;
+    height: 36px;
+    flex-basis: 36px;
+    border-radius: 10px;
+  }
+
   .site-button {
     width: 100%;
     padding-inline: 18px;
