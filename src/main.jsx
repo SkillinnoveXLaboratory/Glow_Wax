@@ -58,7 +58,7 @@ const services = [
   {
     title: 'Grooming',
     icon: Store,
-    image: '/images/hero-salon.jpg',
+    image: 'https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&w=820&q=78',
   },
   {
     title: 'Wellness',

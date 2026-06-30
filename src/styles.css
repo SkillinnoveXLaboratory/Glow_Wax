@@ -17,7 +17,7 @@
   --charcoal: #111111;
   color: var(--paper);
   background: var(--ink);
-  font-family: "Poppins", sans-serif;
+  font-family: "Manrope", sans-serif;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
 }
@@ -115,6 +115,7 @@ img {
   display: inline-flex;
   align-items: center;
   gap: 12px;
+  font-family: "Manrope", sans-serif;
   font-size: 23px;
   font-weight: 800;
   letter-spacing: 0;
@@ -204,6 +205,7 @@ img {
   position: relative;
   font-size: 14px;
   font-weight: 600;
+  letter-spacing: 0.02em;
 }
 
 .site-header nav a::after {
@@ -234,6 +236,7 @@ img {
   background: var(--lime);
   font-size: 14px;
   font-weight: 800;
+  letter-spacing: 0.02em;
   line-height: 1;
   white-space: nowrap;
   transition: transform 0.24s ease, background 0.24s ease;
@@ -308,7 +311,7 @@ img {
   padding: 118px 8% 76px;
   overflow: hidden;
   background:
-    linear-gradient(90deg, rgba(5, 5, 5, 0.84) 0%, rgba(5, 5, 5, 0.6) 40%, rgba(5, 5, 5, 0.16) 100%),
+    linear-gradient(90deg, rgba(5, 5, 5, 0.58) 0%, rgba(5, 5, 5, 0.34) 40%, rgba(5, 5, 5, 0.08) 100%),
     url('/images/Background.png') center right / cover no-repeat;
 }
 
@@ -340,14 +343,14 @@ img {
 .why-copy h2,
 .partner-copy h2,
 .download-center h2 {
-  font-family: "Playfair Display", serif;
-  letter-spacing: 0;
+  font-family: "Cormorant Garamond", serif;
+  letter-spacing: 0.01em;
 }
 
 .hero h1 {
   margin-top: 12px;
   font-size: 118px;
-  font-weight: 800;
+  font-weight: 600;
   line-height: 0.9;
   text-transform: uppercase;
   display: inline-flex;
@@ -416,7 +419,7 @@ img {
 .section-heading h2 {
   max-width: 760px;
   font-size: 68px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1;
   overflow-wrap: break-word;
 }
@@ -489,7 +492,9 @@ img {
 
 .service-card h3 {
   color: #f2c15f;
+  font-family: "Cormorant Garamond", serif;
   font-size: 28px;
+  font-weight: 600;
   line-height: 1;
 }
 
@@ -550,9 +555,9 @@ img {
 
 .app-features-intro h2 {
   margin-top: 18px;
-  font-family: "Playfair Display", serif;
+  font-family: "Cormorant Garamond", serif;
   font-size: 64px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 0.96;
 }
 
@@ -669,7 +674,9 @@ img {
 
 .app-feature-card h3 {
   margin-top: 26px;
+  font-family: "Cormorant Garamond", serif;
   font-size: 28px;
+  font-weight: 600;
   line-height: 1.06;
 }
 
@@ -719,7 +726,7 @@ img {
 .why-copy h2 {
   margin: 18px 0 24px;
   font-size: 72px;
-  font-weight: 800;
+  font-weight: 600;
   line-height: 0.98;
 }
 
@@ -760,7 +767,9 @@ img {
 .feature-card h3 {
   max-width: 240px;
   margin-top: 30px;
+  font-family: "Cormorant Garamond", serif;
   font-size: 22px;
+  font-weight: 600;
   line-height: 1.2;
 }
 
@@ -795,7 +804,7 @@ img {
 .partner-copy h2 {
   margin: 18px 0 24px;
   font-size: 72px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 0.98;
 }
 
@@ -997,15 +1006,18 @@ img {
 }
 
 .footer-label {
+  font-family: "Manrope", sans-serif;
   color: var(--lime);
   font-size: 12px;
   font-weight: 800;
+  letter-spacing: 0.02em;
 }
 
 .footer-links a,
 .footer-contact a {
   color: #d4d4d4;
   font-size: 14px;
+  font-family: "Manrope", sans-serif;
   transition: color 0.2s ease, transform 0.2s ease;
 }
 
@@ -1159,7 +1171,6 @@ img {
     top: 18px;
     right: 5%;
     z-index: 1001;
-    background: rgba(0, 0, 0, 0.32);
   }
 
   .hero {
@@ -1167,7 +1178,7 @@ img {
     padding: 104px 5% 68px;
     align-items: flex-start;
     background:
-      linear-gradient(180deg, rgba(5, 5, 5, 0.82) 0%, rgba(5, 5, 5, 0.5) 58%, rgba(5, 5, 5, 0.22) 100%),
+      linear-gradient(180deg, rgba(5, 5, 5, 0.52) 0%, rgba(5, 5, 5, 0.28) 58%, rgba(5, 5, 5, 0.1) 100%),
       url('/images/Background.png') center right / cover no-repeat;
   }
 
@@ -1210,10 +1221,19 @@ img {
 
   .section-heading {
     align-items: start;
+    gap: 18px;
+    margin-bottom: 36px;
   }
 
   .service-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .why-section,
+  .partner-section,
+  .download-section,
+  .site-footer {
+    gap: 32px;
   }
 
   .app-features-intro {
@@ -1294,7 +1314,8 @@ img {
   .services-section,
   .app-features-section,
   .why-section,
-  .partner-section {
+  .partner-section,
+  .download-section {
     padding-top: 76px;
     padding-bottom: 78px;
   }
@@ -1324,6 +1345,16 @@ img {
     min-height: 270px;
   }
 
+  .service-card-content {
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+  }
+
+  .service-card h3 {
+    font-size: 24px;
+  }
+
   .feature-card {
     min-height: 158px;
   }
@@ -1340,8 +1371,14 @@ img {
     display: none;
   }
 
+  .download-section {
+    padding-bottom: 148px;
+  }
+
   .big-brand {
     font-size: 62px;
+    bottom: 42px;
+    z-index: 2;
   }
 
   .footer-links,
