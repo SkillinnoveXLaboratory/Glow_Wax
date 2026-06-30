@@ -162,25 +162,6 @@ function LinkedinBrandIcon(props) {
   )
 }
 
-function GooglePlayBrandIcon(props) {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" {...props}>
-      <defs>
-        <clipPath id="googlePlayShape">
-          <path d="M4.3 3.6c-.5.4-.8 1-.8 1.7v13.4c0 .7.3 1.3.8 1.7l8.4-8.4-8.4-8.4Z" />
-        </clipPath>
-      </defs>
-      <g clipPath="url(#googlePlayShape)">
-        <path fill="#34a853" d="M3.5 20.4V3.6l8.4 8.4L3.5 20.4Z" />
-        <path fill="#4285f4" d="M11.9 12 20.5 7c.4.3.7.8.7 1.4v7.2c0 .6-.3 1.1-.7 1.4L11.9 12Z" />
-        <path fill="#fbbc05" d="M11.9 12 3.5 3.6c.5-.4 1.2-.5 1.8-.2l6.6 3.9v4.7Z" />
-        <path fill="#ea4335" d="M11.9 12v4.7l6.6 3.9c.6.3 1.3.2 1.8-.2L11.9 12Z" />
-        <path fill="#ffffff" fillOpacity="0.18" d="M11.9 12 20.5 7c.4.3.7.8.7 1.4v7.2c0 .6-.3 1.1-.7 1.4L11.9 12Z" />
-      </g>
-    </svg>
-  )
-}
-
 function App() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
@@ -412,7 +393,7 @@ function App() {
             </p>
             <div className="store-row">
               <a href="mailto:hello@glowvax.com?subject=Glowvax%20Google%20Play" className="store-button">
-                <GooglePlayBrandIcon className="store-icon" />
+                <i className="fa-brands fa-google-play" aria-hidden="true" />
                 Google Play
               </a>
               <a href="mailto:hello@glowvax.com?subject=Glowvax%20App%20Store" className="store-button">
