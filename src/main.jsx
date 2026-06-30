@@ -18,7 +18,6 @@ import {
   Scissors,
   ShieldCheck,
   Sparkles,
-  Star,
   Store,
   TicketPercent,
   UsersRound,
@@ -159,6 +158,25 @@ function LinkedinBrandIcon(props) {
         fill="currentColor"
         d="M6.2 8.8H3.7V20h2.5V8.8ZM5 3.8a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3Zm5.6 5H8.1V20h2.5v-6.1c0-1.8.7-2.8 2.2-2.8 1.4 0 1.9 1 1.9 2.8V20h2.5v-6.6c0-3.1-1.7-4.7-3.9-4.7-1.4 0-2.4.6-3.1 1.6h-.1V8.8Z"
       />
+    </svg>
+  )
+}
+
+function GooglePlayBrandIcon(props) {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" {...props}>
+      <defs>
+        <clipPath id="googlePlayShape">
+          <path d="M4.3 3.6c-.5.4-.8 1-.8 1.7v13.4c0 .7.3 1.3.8 1.7l8.4-8.4-8.4-8.4Z" />
+        </clipPath>
+      </defs>
+      <g clipPath="url(#googlePlayShape)">
+        <path fill="#34a853" d="M3.5 20.4V3.6l8.4 8.4L3.5 20.4Z" />
+        <path fill="#4285f4" d="M11.9 12 20.5 7c.4.3.7.8.7 1.4v7.2c0 .6-.3 1.1-.7 1.4L11.9 12Z" />
+        <path fill="#fbbc05" d="M11.9 12 3.5 3.6c.5-.4 1.2-.5 1.8-.2l6.6 3.9v4.7Z" />
+        <path fill="#ea4335" d="M11.9 12v4.7l6.6 3.9c.6.3 1.3.2 1.8-.2L11.9 12Z" />
+        <path fill="#ffffff" fillOpacity="0.18" d="M11.9 12 20.5 7c.4.3.7.8.7 1.4v7.2c0 .6-.3 1.1-.7 1.4L11.9 12Z" />
+      </g>
     </svg>
   )
 }
@@ -393,21 +411,36 @@ function App() {
               secure, and hassle-free booking experience with <GlowvaxWordmark className="brand-inline brand-copy-mark" />.
             </p>
             <div className="store-row">
-              <a href="mailto:hello@glowvax.com?subject=Glowvax%20Google%20Play" className="site-button">
-                <Download size={18} />
+              <a href="mailto:hello@glowvax.com?subject=Glowvax%20Google%20Play" className="store-button">
+                <GooglePlayBrandIcon className="store-icon" />
                 Google Play
               </a>
-              <a href="mailto:hello@glowvax.com?subject=Glowvax%20App%20Store" className="site-button">
-                <Apple size={18} />
+              <a href="mailto:hello@glowvax.com?subject=Glowvax%20App%20Store" className="store-button">
+                <Apple size={26} />
                 App Store
               </a>
             </div>
           </div>
           <div className="phone-frame motion-card from-right" aria-hidden="true">
             <div className="phone-screen">
-              <Star size={22} />
+              <div className="phone-notch">
+                <span />
+              </div>
+              <div className="phone-app-logo">
+                <img src="/images/logo.png" alt="" />
+              </div>
               <strong><GlowvaxWordmark className="brand-phone" /></strong>
-              <span>Book salon appointments faster.</span>
+              <span>Book salon appointments<br />faster.</span>
+              <div className="phone-photo">
+                <img src="/images/saloon.png" alt="" loading="eager" decoding="async" />
+              </div>
+              <div className="phone-dots">
+                <span />
+                <span className="active" />
+                <span />
+                <span />
+                <span />
+              </div>
             </div>
           </div>
           <div className="big-brand" aria-hidden="true">
