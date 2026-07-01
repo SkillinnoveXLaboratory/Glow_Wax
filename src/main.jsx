@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import {
-  Apple,
   ArrowUpRight,
   BadgeCheck,
   BellRing,
@@ -393,11 +392,11 @@ function App() {
             </p>
             <div className="store-row">
               <a href="mailto:hello@glowvax.com?subject=Glowvax%20Google%20Play" className="store-button">
-                <i className="fa-brands fa-google-play" aria-hidden="true" />
+                <img className="store-logo" src="/images/playstore.png" alt="" aria-hidden="true" />
                 Google Play
               </a>
               <a href="mailto:hello@glowvax.com?subject=Glowvax%20App%20Store" className="store-button">
-                <Apple size={26} />
+                <img className="store-logo store-logo-apple" src="/images/apple_logo.png" alt="" aria-hidden="true" />
                 App Store
               </a>
             </div>
